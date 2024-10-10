@@ -120,6 +120,7 @@ class _StartLiveStreamState extends State<StartLiveStream> {
             autoSubscribeVideo: true,
             autoSubscribeAudio: true,
             clientRoleType: ClientRoleType.clientRoleAudience,
+            defaultVideoStreamType: VideoStreamType.videoStreamHigh,
             audienceLatencyLevel:
                 AudienceLatencyLevelType.audienceLatencyLevelUltraLowLatency,
           ));

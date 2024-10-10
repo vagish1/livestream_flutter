@@ -20,7 +20,7 @@ class _StartLiveStreamState extends State<StartLiveStream> {
   // Replace with your Agora credentials
   static const String appId = "e44591baf1364511948c78aa83a01d4d";
   static const String token =
-      "007eJxTYNjQ9OrDxN9Wp3i1nm/90mh8+XeV+XKdOTJnwha+yTFaXOqjwJBqYmJqaZiUmGZobGZiamhoaWKRbG6RmGhhnGhgmGKSMn89e3pDICODp2E3MyMDBIL4fAzFBflFJcW6yRmJeXmpOQwMAFZ6JJo=";
+      "007eJxTYAj69UjyZNI095hUnQ8fd1Vb6U/QtCm9z7tYOTiXyaovJkqBIdXExNTSMCkxzdDYzMTU0NDSxCLZ3CIx0cI40cAwxSTF9i97ekMgI0OUZQAzIwMEgvh8DMUF+UUlxbrJGYl5eak5DAwA+ScgqQ==";
   static const String channelId =
       "sports-channel"; // Replace with your channel name
 

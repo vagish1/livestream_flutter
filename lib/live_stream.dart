@@ -104,9 +104,14 @@ class _StartLiveStreamState extends State<StartLiveStream> {
           channelId: channelId,
           uid: 0,
           options: const ChannelMediaOptions(
-              publishCameraTrack: true, publishMicrophoneTrack: true));
+            publishCameraTrack: true,
+            publishMicrophoneTrack: true,
+            clientRoleType: ClientRoleType.clientRoleBroadcaster,
+          ));
     } else {
-      await _engine?.setClientRole(role: ClientRoleType.clientRoleAudience);
+      await _engine?.setClientRole(
+        role: ClientRoleType.clientRoleAudience,
+      );
 
       await _engine?.joinChannel(
           token: token,
@@ -115,6 +120,7 @@ class _StartLiveStreamState extends State<StartLiveStream> {
           options: const ChannelMediaOptions(
             autoSubscribeVideo: true,
             autoSubscribeAudio: true,
+            clientRoleType: ClientRoleType.clientRoleAudience,
           ));
     }
 

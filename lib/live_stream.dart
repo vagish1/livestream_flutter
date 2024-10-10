@@ -92,6 +92,15 @@ class _StartLiveStreamState extends State<StartLiveStream> {
 
       await _engine?.startPreview();
       await _engine?.switchCamera();
+      await _engine
+          ?.setVideoEncoderConfiguration(const VideoEncoderConfiguration(
+        dimensions: VideoDimensions(
+            width: 1920, height: 1080), // Set resolution to 1080p
+        frameRate: 60, // Set frame rate to 30 fps
+        bitrate: 3500, // Set a high bitrate (in kbps) for better quality
+        orientationMode:
+            OrientationMode.orientationModeAdaptive, // Adaptive orientation
+      ));
 
       logger.d("Broadcaster is ready and started streaming.");
       await _engine?.joinChannel(

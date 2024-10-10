@@ -95,9 +95,9 @@ class _StartLiveStreamState extends State<StartLiveStream> {
       await _engine
           ?.setVideoEncoderConfiguration(const VideoEncoderConfiguration(
         dimensions: VideoDimensions(
-            width: 1920, height: 1080), // Set resolution to 1080p
-        frameRate: 60, // Set frame rate to 30 fps
-        bitrate: 3500, // Set a high bitrate (in kbps) for better quality
+            width: 2560, height: 1440), // Set resolution to 1440p
+        frameRate: 60, // Set frame rate to 60 fps
+        bitrate: 150000, // Increase bitrate for higher quality (1500 kbps)
         orientationMode:
             OrientationMode.orientationModeAdaptive, // Adaptive orientation
       ));

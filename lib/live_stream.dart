@@ -89,25 +89,24 @@ class _StartLiveStreamState extends State<StartLiveStream> {
       await _engine?.setClientRole(role: ClientRoleType.clientRoleBroadcaster);
 
       await _engine?.enableVideo();
+
       await _engine?.startPreview();
       await _engine?.switchCamera();
-      await _engine?.setVideoEncoderConfiguration(
-        const VideoEncoderConfiguration(
-          dimensions: VideoDimensions(width: 640, height: 360),
-          frameRate: 60,
-          bitrate: 600,
-        ),
-      );
+
       logger.d("Broadcaster is ready and started streaming.");
       await _engine?.joinChannel(
-          token: token,
-          channelId: channelId,
-          uid: 0,
-          options: const ChannelMediaOptions(
-            publishCameraTrack: true,
-            publishMicrophoneTrack: true,
-            clientRoleType: ClientRoleType.clientRoleBroadcaster,
-          ));
+        token: token,
+        channelId: channelId,
+        uid: 0,
+        options: const ChannelMediaOptions(
+          publishCameraTrack: true,
+          publishMicrophoneTrack: true,
+          clientRoleType: ClientRoleType.clientRoleBroadcaster,
+          defaultVideoStreamType: VideoStreamType.videoStreamHigh,
+          audienceLatencyLevel:
+              AudienceLatencyLevelType.audienceLatencyLevelUltraLowLatency,
+        ),
+      );
     } else {
       await _engine?.setClientRole(
         role: ClientRoleType.clientRoleAudience,
@@ -121,6 +120,8 @@ class _StartLiveStreamState extends State<StartLiveStream> {
             autoSubscribeVideo: true,
             autoSubscribeAudio: true,
             clientRoleType: ClientRoleType.clientRoleAudience,
+            audienceLatencyLevel:
+                AudienceLatencyLevelType.audienceLatencyLevelUltraLowLatency,
           ));
     }
 

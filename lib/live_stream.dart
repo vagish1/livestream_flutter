@@ -99,16 +99,26 @@ class _StartLiveStreamState extends State<StartLiveStream> {
         ),
       );
       logger.d("Broadcaster is ready and started streaming.");
+      await _engine?.joinChannel(
+          token: token,
+          channelId: channelId,
+          uid: 0,
+          options: const ChannelMediaOptions(
+              publishCameraTrack: true, publishMicrophoneTrack: true));
     } else {
       await _engine?.setClientRole(role: ClientRoleType.clientRoleAudience);
+
+      await _engine?.joinChannel(
+          token: token,
+          channelId: channelId,
+          uid: 0,
+          options: const ChannelMediaOptions(
+            autoSubscribeVideo: true,
+            autoSubscribeAudio: true,
+          ));
     }
 
     // Join the channel with a valid token
-    await _engine?.joinChannel(
-        token: token,
-        channelId: channelId,
-        uid: 0,
-        options: const ChannelMediaOptions());
   }
 
   @override
@@ -147,6 +157,7 @@ class _StartLiveStreamState extends State<StartLiveStream> {
   // Remote video view for audience
   Widget _audienceView() {
     if (_engine != null && _remoteUid != null) {
+      logger.d(_remoteUid);
       logger.d("Im here");
       return AgoraVideoView(
         onAgoraVideoViewCreated: (viewId) {
